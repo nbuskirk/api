@@ -1,4 +1,4 @@
-Apica WPM / Check Demo
+APICA Demo API
 ======================
 
-Apica WPM representation in angular.js. This is a skeleton project, starter template version 1.0 for building out an application.
+This is a demo angular application, consuming a node.js/express REST API backend. This is experimental and currently in development stages.
