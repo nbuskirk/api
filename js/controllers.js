@@ -40,6 +40,9 @@ myApp.controller('customerCreationCtrl', ['$scope', 'CustomersFactory', '$locati
         $scope.createNewCustomer = function () {
             CustomersFactory.create($scope.customer);
             $location.path('/customer-list');
-        }
+        };
+        $scope.cancel = function () {
+            $location.path('/customer-list');
+        };
     }]
 );

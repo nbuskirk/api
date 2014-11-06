@@ -4,7 +4,7 @@
         <thead>
         <tr>
             <th style="min-width: 80px;">Customer Name</th>
-            <th style="min-width: 80px;">Channel</th>
+            <th style="min-width: 80px;">Contract Value</th>
             <th style="width:20px;"> </th>
             <th style="width:20px;"> </th>
         </tr>
@@ -12,7 +12,7 @@
         <tbody>
         <tr ng-repeat="customer in customers">
             <td>{{ customer.name }}</td>
-            <td>{{ customer.channel }}</td>
+            <td>{{ customer.contractvalue }}</td>
             <td><a ng-click="editCustomer(customer._id)" class="btn btn-small btn-primary">Edit</a></td>
             <td><a ng-click="deleteCustomer(customer._id)" class="btn btn-small btn-danger">Delete</a></td>
         </tr>
