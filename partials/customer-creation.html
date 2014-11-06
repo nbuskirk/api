@@ -1,0 +1,24 @@
+<div class="jumbotron">
+  
+    <form novalidate="novalidate" class="form-horizontal">
+        <div class="form-group">
+            <label for="inputName">Customer name:</label>
+
+                <input class="form-control" type="text" id="inputName" ng-model="customer.name" placeholder="Customer name"/>
+
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="inputLastName">Channel:</label>
+
+
+                <input class="form-control" type="text" id="inputChannel" ng-model="customer.channel" placeholder="Channel"/>
+
+        </div>
+        <div class="form-group">
+
+                <a ng-click="createNewCustomer()" class="btn btn-small btn-primary">Create Customer</a>
+
+        </div>
+    </form>
+
+</div>

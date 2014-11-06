@@ -1,0 +1,20 @@
+
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background:#e2e2e2;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+.animate-enter {
+	-webkit-transition: 1s linear all; /* Chrome */
+	transition: 1s linear all;
+	opacity: 0;
+}
+
+.animate-enter.animate-enter-active {
+	opacity: 1;
+}

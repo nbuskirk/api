@@ -1,0 +1,29 @@
+<div class="jumbotron">
+<div class="container">
+    <p>Displaying details for: {{customer.name}}</p>
+
+    <form novalidate="novalidate" role="form">
+        <div class="form-group">
+            <label class="control-label" for="inputFirstName">Customer Name:</label>
+
+            <div class="controls">
+                <input class="form-control" type="text" id="inputName" ng-model="customer.name"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="inputLastName">Channel:</label>
+
+            <div class="controls">
+                <input class="form-control" type="text" id="inputChannel" ng-model="customer.channel"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="controls">
+
+                <button type="submit" ng-click="updateCustomer()" ng-click="cancel()" class="btn btn-primary">Update User</button>
+                <button type="button" ng-click="cancel()" class="btn btn-default">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
