@@ -26,8 +26,10 @@ myApp.controller('customerListCtrl', ['$scope', 'CustomersFactory', 'CustomerFac
 myApp.controller('customerDetailCtrl', ['$scope', '$routeParams', 'CustomerFactory', '$location',
     function ($scope, $routeParams, CustomerFactory, $location) {
         $scope.updateCustomer = function () {
-            CustomerFactory.update($scope.customer);
-            $location.path('/customer-list');
+            CustomerFactory.update($scope.customer, function(){
+                $location.path('/customer-list');
+            });
+
         };
         $scope.cancel = function () {
             $location.path('/customer-list');

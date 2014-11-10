@@ -1,6 +1,6 @@
 <div class="jumbotron">
-  <form novalidate="novalidate" >
-    <div class="form-group">
+  <form novalidate="novalidate" name="customerForm">
+    <div class="form-group" ng-class="{ 'has-error': customerForm.inputName.$invalid }">
       <label for="inputName">Customer name:</label>
       <input class="form-control" type="text" id="inputName" ng-model="customer.name" placeholder="Customer name"/>
     </div>
