@@ -1,12 +1,18 @@
-<div class="jumbotron">
+<script>
+  $('#inputStartDate').datepicker();
+  $('#inputEndDate').datepicker();
+</script>
+<div class="jumbotron" >
   <form novalidate="novalidate" name="customerForm">
-    <div class="form-group" ng-class="{ 'has-error': customerForm.inputName.$invalid }">
-      <label for="inputName">Customer name:</label>
-      <input class="form-control" type="text" id="inputName" ng-model="customer.name" placeholder="Customer name"/>
+    customer = {{customer}}
+    <div class="form-group">
+      <label for="inputName">Name:</label>
+      <input class="form-control" name="inputName" type="text" id="inputName" ng-model="customer.name" placeholder="Customer Name" required>
     </div>
     <div class="form-group">
       <label for="inputChannel">Channel:</label>
       <input class="form-control" type="text" id="inputChannel" ng-model="customer.channel" placeholder="Channel"/>
+      
     </div>
     <div class="form-group">
       <label for="inputChannel">Reseller:</label>
@@ -22,11 +28,28 @@
     </div>
     <div class="form-group">
       <label for="inputTerm">Length of Term(Months)</label>
-      <input class="form-control" type="text" id="inputTerm" ng-model="customer.term" placeholder="Length of Term (Months)"/>
+      <!--<input class="form-control" type="text" id="inputTerm" ng-model="customer.term" placeholder="Length of Term (Months)"/>-->
+      <select class="form-control" id="inputTerm" ng-model="customer.term">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+      </select>
     </div>
     <div class="form-group">
       <label for="inputRenew">Auto Renew (Y/N)</label>
-      <input class="form-control" type="text" id="inputRenew" ng-model="customer.autorenew" placeholder="Auto Renew?"/>
+      <select class="form-control" id="inputRenew" ng-model="customer.autorenew">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
     </div>
     <div class="form-group">
       <label for="inputChecksCommitted">Number of Checks Committed</label>

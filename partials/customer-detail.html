@@ -1,59 +1,59 @@
+<script>
+  $('#inputStartDate').datepicker();
+  $('#inputEndDate').datepicker();
+</script>
 <div class="jumbotron">
-<div class="container">
-    <p>Displaying details for: {{customer.name}}</p>
-
-    <form novalidate="novalidate" role="form">
+  <p>Displaying details for: {{customer.name}}</p>
+  <form novalidate="novalidate" role="form">
+    <div class="form-group">
+      <label for="inputName">Customer name:</label>
+      <input class="form-control" type="text" id="inputName" ng-model="customer.name" placeholder="Customer name"/>
+    </div>
+    <div class="form-group">
+      <label for="inputChannel">Channel:</label>
+      <input class="form-control" type="text" id="inputChannel" ng-model="customer.channel" placeholder="Channel"/>
+    </div>
+    <div class="form-group">
+      <label for="inputChannel">Reseller:</label>
+      <input class="form-control" type="text" id="inputReseller" ng-model="customer.reseller" placeholder="Reseller"/>
+    </div>
+    <div class="form-group">
+      <label for="inputStartDate">Start Date:</label>
+      <input class="form-control" type="text" id="inputStartDate" ng-model="customer.startdate" placeholder="Start Date"/>
+    </div>
+    <div class="form-group">
+      <label for="inputEndDate">End Date</label>
+      <input class="form-control" type="text" id="inputEndDate" ng-model="customer.enddate" placeholder="End Date"/>
+    </div>
+    <div class="form-group">
+      <label for="inputTerm">Length of Term(Months)</label>
+      <input class="form-control" type="text" id="inputTerm" ng-model="customer.term" placeholder="Length of Term (Months)"/>
+    </div>
+    <div class="form-group">
+      <label for="inputRenew">Auto Renew (Y/N)</label>
+      <input class="form-control" type="text" id="inputRenew" ng-model="customer.autorenew" placeholder="Auto Renew?"/>
+    </div>
+    <div class="form-group">
+      <label for="inputChecksCommitted">Number of Checks Committed</label>
+      <input class="form-control" type="text" id="inputChecksCommitted" ng-model="customer.checkscommitted" placeholder="Checks Committed"/>
+    </div>
+    <div class="form-group">
+      <label for="inputBrowserChecks">Browser Checks Used</label>
+      <input class="form-control" type="text" id="inputBrowserChecks" ng-model="customer.browserchecks" placeholder="Browser Checks Used"/>
+    </div>
+    <div class="form-group">
+      <label for="inputUrlChecks">URL Checks Used</label>
+      <input class="form-control" type="text" id="inputUrlChecks" ng-model="customer.urlchecks" placeholder="URL Checks Used"/>
+    </div>
+    <div class="form-group">
+      <label for="inputContractValue">Committed Contract Value</label>
+      <input class="form-control" type="text" id="inputContractValue" ng-model="customer.contractvalue" placeholder="Committed Contract Value"/>
+    </div>
       <div class="form-group">
-        <label for="inputName">Customer name:</label>
-        <input class="form-control" type="text" id="inputName" ng-model="customer.name" placeholder="Customer name"/>
+          <div class="controls">
+              <button type="submit" ng-click="updateCustomer()" ng-click="cancel()" class="btn btn-primary">Update User</button>
+              <button type="button" ng-click="cancel()" class="btn btn-default">Cancel</button>
+          </div>
       </div>
-      <div class="form-group">
-        <label for="inputChannel">Channel:</label>
-        <input class="form-control" type="text" id="inputChannel" ng-model="customer.channel" placeholder="Channel"/>
-      </div>
-      <div class="form-group">
-        <label for="inputChannel">Reseller:</label>
-        <input class="form-control" type="text" id="inputReseller" ng-model="customer.reseller" placeholder="Reseller"/>
-      </div>
-      <div class="form-group">
-        <label for="inputStartDate">Start Date:</label>
-        <input class="form-control" type="text" id="inputStartDate" ng-model="customer.startdate" placeholder="Start Date"/>
-      </div>
-      <div class="form-group">
-        <label for="inputEndDate">End Date</label>
-        <input class="form-control" type="text" id="inputEndDate" ng-model="customer.enddate" placeholder="End Date"/>
-      </div>
-      <div class="form-group">
-        <label for="inputTerm">Length of Term(Months)</label>
-        <input class="form-control" type="text" id="inputTerm" ng-model="customer.term" placeholder="Length of Term (Months)"/>
-      </div>
-      <div class="form-group">
-        <label for="inputRenew">Auto Renew (Y/N)</label>
-        <input class="form-control" type="text" id="inputRenew" ng-model="customer.autorenew" placeholder="Auto Renew?"/>
-      </div>
-      <div class="form-group">
-        <label for="inputChecksCommitted">Number of Checks Committed</label>
-        <input class="form-control" type="text" id="inputChecksCommitted" ng-model="customer.checkscommitted" placeholder="Checks Committed"/>
-      </div>
-      <div class="form-group">
-        <label for="inputBrowserChecks">Browser Checks Used</label>
-        <input class="form-control" type="text" id="inputBrowserChecks" ng-model="customer.browserchecks" placeholder="Browser Checks Used"/>
-      </div>
-      <div class="form-group">
-        <label for="inputUrlChecks">URL Checks Used</label>
-        <input class="form-control" type="text" id="inputUrlChecks" ng-model="customer.urlchecks" placeholder="URL Checks Used"/>
-      </div>
-      <div class="form-group">
-        <label for="inputContractValue">Committed Contract Value</label>
-        <input class="form-control" type="text" id="inputContractValue" ng-model="customer.contractvalue" placeholder="Committed Contract Value"/>
-      </div>
-        <div class="form-group">
-            <div class="controls">
-
-                <button type="submit" ng-click="updateCustomer()" ng-click="cancel()" class="btn btn-primary">Update User</button>
-                <button type="button" ng-click="cancel()" class="btn btn-default">Cancel</button>
-            </div>
-        </div>
-    </form>
-</div>
+  </form>
 </div>
