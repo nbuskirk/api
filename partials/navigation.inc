@@ -20,6 +20,12 @@
             <li><a href="#/customer-creation">Create a Customer</a></li>
           </ul>
         </li>
+        <li class="dropdown">
+        <a href="" class="dropdown-toggle" data-toggle="dropdown">Reports <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#/reports/daysRemaining/barChart">Contract Time Remaining</a></li>
+          </ul>
+        </li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container-fluid -->

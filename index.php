@@ -13,7 +13,7 @@
 <!-- Main application template, main container start -->
 <div class="container" >
   <?php include('partials/navigation.inc'); ?>
-  <div ng-view></div>
+  <div ng-view class="reveal-animation"></div>
   <?php include('partials/footer.inc'); ?>
 </div>
 <!-- end main application container -->
@@ -21,8 +21,9 @@
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
 <script src="node_modules/angular/angular.min.js"></script>
+<script src="node_modules/angular-animate/angular-animate.min.js"></script>
 <script src="node_modules/angular-route/angular-route.min.js"></script>
-<script src="node_modules/angular-resource/angular-resource.js"></script>
+<script src="node_modules/angular-resource/angular-resource.min.js"></script>
 <script src="https://www.google.com/jsapi" type="text/javascript"></script>
 <script src="js/bootstrap-datepicker.js"></script>
 <script src="js/app.js"></script>

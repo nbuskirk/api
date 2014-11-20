@@ -5,27 +5,19 @@ var services = angular.module('myApp.services',[
 ]);
 
 services.factory('CustomersFactory', function ($resource) {
-    return $resource('http://192.168.150.94:8080/api/customer', {}, {
+    return $resource('http://nunumetrics.apica.local:8080/api/customer', {}, {
         query: { method: 'GET', isArray: true },
         create: { method: 'POST' }
     })
 });
 
 services.factory('CustomerFactory', function ($resource) {
-    return $resource('http://192.168.150.94:8080/api/customer/:id', {}, {
+    return $resource('http://nunumetrics.apica.local:8080/api/customer/:id', {}, {
         show: { method: 'GET' },
         update: { method: 'PUT', params: {id: '@_id'} },
         delete: { method: 'DELETE', params: {id: '@_id'} }
     })
 });
-
-services.factory('ChartFactory', function(){
-  return {
-    showChart: function methodThatDoesAThing() {
-      return "1";
-    }
-  }
-})
 /*
 $scope.drawChart = function(){
   var chartSchema = {

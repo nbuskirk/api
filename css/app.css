@@ -13,8 +13,14 @@ table {
   margin-top:20px;
 
 }
+.jumbotron p {
+  font-size:14px;
+}
 th {
   font-weight:bold;
+}
+th a {
+  color:black;
 }
 td {
   vertical-align:middle !important;
@@ -24,4 +30,16 @@ a{
 }
 .footer {
   padding-top:15px;
+}
+.reveal-animation.ng-enter {
+  -webkit-animation: enter_sequence 1s linear; /* Safari/Chrome */
+  animation: enter_sequence 1s linear; /* IE10+ and Future Browsers */
+}
+@-webkit-keyframes enter_sequence {
+  from { opacity:0; }
+  to { opacity:1; }
+}
+@keyframes enter_sequence {
+  from { opacity:0; }
+  to { opacity:1; }
 }
