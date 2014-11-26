@@ -1,38 +1,69 @@
 <div class="jumbotron">
 <div class="row">
-  <!--
-  <div class="col-md-6">
-    <p>Search:</p>
-    <input class="form-control" ng-model="query">
-  </div>
-  <div class="col-md-6">
-    <p>Sort by:</p>
-    <select class="form-control" ng-model="orderProp">
-      <option value="name" >Customer Name (ASC)</option>
-      <option value="-contractvalue">Contract Value (DESC)</option>
-      <option value="daysremaining">Contract Days Remaining (ASC)</option>
-    </select>
-  </div>
-  -->
   <div class="col-md-12">
-    <table class="table table-striped table-condensed" >
+    <table class="table-responsive table-striped table-condensed table-hover" style="font-size:12px">
         <thead>
         <tr>
-            <th><a ng-click="orderProp='name'">Customer Name</a></th>
-            <th><a ng-click="orderProp='-contractvalue'">Contract Value</a></th>
-            <th><a ng-click="orderProp='daysremaining'">Contract Days Remaining</a></th>        
+            <th>Customer Name</th>
+            <!--<th>Channel</th>
+            <th>Reseller</th>-->
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Term Length</th>
+            <th>Auto Renew</th>
+            <th>Checks Committed</th>
+            <th>Browser Checks</th>
+            <th>URL Checks</th>
+            <th>Committed Checks Used</th>
+            <th>% Committed Checks Used</th>
+            <th>Contract Value</th>
+            <th>MRR</th>
+            <th>PPC Committed</th>
+            <th>PPC Used</th>
+            <!--<th>Salesforce URL</th>-->
+            <!--<th>Comments</th>-->
         </tr>
       </thead>
         <tbody>
         <tr>
             <td><a ng-click="editCustomer(customer1._id)">{{ customer1.name }}</a></td>
-            <td>{{ customer1.contractvalue | currency }}</td>
-            <td>{{ customer1.daysremaining }}</td>
+            <!--<td>{{ customer1.channel }}</td>
+            <td>{{ customer1.reseller }}</td>-->
+            <td>{{ customer1.startdate }}</td>
+            <td>{{ customer1.enddate }}</td>
+            <td>{{ customer1.term }}</td>
+            <td>{{ customer1.autorenew }}</td>
+            <td>{{ customer1.checkscommitted }}</td>
+            <td>{{ customer1.browserchecks }}</td>
+            <td>{{ customer1.urlchecks }}</td>
+            <td>{{ customer1.browserchecks + customer1.urlchecks }}</td> <!--checks used -->
+            <td>{{ ((customer1.browserchecks + customer1.urlchecks) / customer1.checkscommitted) * 100 }}</td><!-- % checks -->
+            <td>{{ customer1.contractvalue }}</td> <!-- contract -->
+            <td>{{ (customer1.contractvalue / customer1.term) | number:0  }}</td><!-- mrr -->
+            <td>{{ (customer1.contractvalue / customer1.term) / customer1.checkscommitted | number:2 }}</td><!-- ppc commit-->
+            <td>{{ (customer1.contractvalue / customer1.term) / (customer1.browserchecks + customer1.urlchecks) | number:2 }}</td> <!-- ppc month -->
+            <!--<td>{{ customer1.sflink }}</td>-->
+            <!--<td>{{ customer1.comments }}</td>-->
         </tr>
         <tr>
             <td><a ng-click="editCustomer(customer2._id)">{{ customer2.name }}</a></td>
-            <td>{{ customer2.contractvalue | currency }}</td>
-            <td>{{ customer2.daysremaining }}</td>
+            <!--<td>{{ customer2.channel }}</td>
+            <td>{{ customer2.reseller }}</td>-->
+            <td>{{ customer2.startdate }}</td>
+            <td>{{ customer2.enddate }}</td>
+            <td>{{ customer2.term }}</td>
+            <td>{{ customer2.autorenew }}</td>
+            <td>{{ customer2.checkscommitted }}</td>
+            <td>{{ customer2.browserchecks }}</td>
+            <td>{{ customer2.urlchecks }}</td>
+            <td>{{ customer2.browserchecks + customer2.urlchecks }}</td> <!--checks used -->
+            <td>{{ ((customer2.browserchecks + customer2.urlchecks) / customer2.checkscommitted) * 100 }}</td><!-- % checks -->
+            <td>{{ customer2.contractvalue }}</td> <!-- contract -->
+            <td>{{ (customer2.contractvalue / customer2.term) | number:0 }}</td><!-- mrr -->
+            <td>{{ (customer2.contractvalue / customer2.term) / customer2.checkscommitted | number:2 }}</td><!-- ppc commit-->
+            <td>{{ (customer2.contractvalue / customer2.term) / (customer2.browserchecks + customer2.urlchecks) | number:2 }}</td> <!-- ppc month -->
+            <!--<td>{{ customer2.sflink }}</td>-->
+            <!--<td>{{ customer2.comments }}</td>-->
         </tr>
         </tbody>
     </table>

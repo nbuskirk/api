@@ -3,8 +3,8 @@
   $('#inputEndDate').datepicker();
 </script>
 <div class="jumbotron">
-  <p>Displaying details for: {{customer.name}}</p>
   <form novalidate="novalidate" role="form">
+    <div class="col-md-6">
     <div class="form-group">
       <label for="inputName">Customer name:</label>
       <input class="form-control" type="text" id="inputName" ng-model="customer.name" placeholder="Customer name"/>
@@ -33,6 +33,8 @@
       <label for="inputRenew">Auto Renew (Y/N)</label>
       <input class="form-control" type="text" id="inputRenew" ng-model="customer.autorenew" placeholder="Auto Renew?"/>
     </div>
+  </div><!-- col -->
+  <div class="col-md-6">
     <div class="form-group">
       <label for="inputChecksCommitted">Number of Checks Committed</label>
       <input class="form-control" type="text" id="inputChecksCommitted" ng-model="customer.checkscommitted" placeholder="Checks Committed"/>
@@ -49,11 +51,21 @@
       <label for="inputContractValue">Committed Contract Value</label>
       <input class="form-control" type="text" id="inputContractValue" ng-model="customer.contractvalue" placeholder="Committed Contract Value"/>
     </div>
+    <div class="form-group">
+      <label for="inputSFLink">Salesforce Link</label>
+      <input class="form-control" type="url" id="inputSFLink" ng-model="customer.sflink" placeholder="Salesforce Link"/>
+    </div>
+    <div class="form-group">
+      <label for="inputComments">Comments</label>
+      <textarea class="form-control" type="text" id="inputComments" ng-model="customer.comments" placeholder="Comments"/>
+    </div>
       <div class="form-group">
           <div class="controls">
-              <button type="submit" ng-click="updateCustomer()" ng-click="cancel()" class="btn btn-primary">Update User</button>
+              <button type="submit" ng-click="updateCustomer()" ng-click="cancel()" class="btn btn-primary">Update</button>
               <button type="button" ng-click="cancel()" class="btn btn-default">Cancel</button>
           </div>
       </div>
+    </div><!-- col -->
+    <div style="clear:both"></div>
   </form>
 </div>

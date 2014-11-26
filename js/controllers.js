@@ -14,6 +14,7 @@ myApp.run(function ($rootScope, $templateCache) {
         $templateCache.removeAll();
     });
 });
+
 angular.module('myApp.controllers', [])
   .controller('customerListCtrl', ['$scope','filterFilter', 'CustomersFactory', 'CustomerFactory', '$location',
   function ($scope, filterFilter, CustomersFactory, CustomerFactory, $location, $templateCache) {
@@ -46,7 +47,6 @@ angular.module('myApp.controllers', [])
       $scope.selectedCustomers = function selectedCustomers() {
         return filterFilter($scope.customers, { selected: true });
       };
-      // watch fruits for changes
       $scope.$watch('customers|filter:{selected:true}', function (nv) {
         $scope.selection = nv.map(function (customer) {
           return customer._id;
@@ -65,7 +65,8 @@ angular.module('myApp.controllers', [])
 
         };
         $scope.cancel = function () {
-            $location.path('/customer-list');
+            window.history.back()
+            //$location.path('/customer-list');
         };
         $scope.customer = CustomerFactory.show({id: $routeParams.id});
   }])
@@ -90,7 +91,8 @@ angular.module('myApp.controllers', [])
           }
       };
         $scope.cancel = function () {
-            $location.path('/customer-list');
+            //$location.path('/customer-list');
+            window.history.back()
         };
   }])
   .controller('reportsDaysRemaining', ['$scope', '$routeParams', 'CustomersFactory', 'CustomerFactory', '$location',
@@ -132,9 +134,58 @@ angular.module('myApp.controllers', [])
   function ($scope, $routeParams, CustomerFactory, $location) {
         $scope.customer1 = CustomerFactory.show({id: $routeParams.id});
         $scope.customer2 = CustomerFactory.show({id: $routeParams.name});
+        $scope.editCustomer = function (customerId) {
+            $location.path('/customer-detail/' + customerId);
+        };
   }])
-  .controller('Home', ['$scope', '$routeParams', 'CustomersFactory', 'CustomerFactory', '$location',
-  function ($scope, $routeParams, CustomersFactory, CustomerFactory, $location, $templateCache) {
-        $scope.customers = CustomersFactory.query();
+  .controller('Navigation', ['$scope', '$rootScope', '$routeParams', 'AuthenticationService', '$location', '$cookieStore',
+    function($scope, $rootScope, $routeParams, AuthenticationService, $location, $cookieStore) {
+      $rootScope.globals = $cookieStore.get('globals') || {};
+      $scope.logout = function() {
+        AuthenticationService.ClearCredentials();
+        $location.path('/login');
+      }
+    }])
+  .controller('Home', ['$scope', '$routeParams', 'CustomersFactory', 'CustomerFactory', 'DeskFactory', '$location',
+  function ($scope, $routeParams, CustomersFactory, CustomerFactory, DeskFactory, $location, $templateCache) {
+        //localStorage.setItem('access_token','X1pzJCDYak7DdA2Sgvqg');
+        //$http.defaults.headers.common = {"Access-Control-Request-Headers": "accept, origin, authorization"}; //you probably don't need this line.  This lets me connect to my server on a different domain
+        //$http.defaults.headers.common['Authorization'] = 'Basic cGF1bC5zY2htaXR6QGFwaWNhc3lzdGVtLmNvbTpab21iaWVfNjkh';
+        //$scope.deskInfo = DeskFactory.query();
+        $scope.totalcontracts = 0;
+        $scope.mrr = 0;
+        $scope.ppc = 0;
+        $scope.ppcavg = 0;
+        $scope.totalchecks = 0;
+        $scope.customers = CustomersFactory.query('',function(){
+          angular.forEach($scope.customers,function(customer){
+            var mrr = Number(customer.contractvalue / customer.term);
+            var ppc = mrr / Number(customer.checkscommitted);
+            $scope.totalcontracts += Number(customer.contractvalue);
+            $scope.mrr += mrr;
+            $scope.ppc += ppc;
+            $scope.ppcavg = $scope.ppc / $scope.customers.length;
+            $scope.totalchecks += Number(customer.checkscommitted);
+          })
+        });
       }
   ])
+  .controller('loginController',
+    ['$scope', '$rootScope', '$location', 'AuthenticationService',
+    function ($scope, $rootScope, $location, AuthenticationService) {
+        // reset login status
+        AuthenticationService.ClearCredentials();
+
+        $scope.login = function () {
+            $scope.dataLoading = true;
+            AuthenticationService.Login($scope.username, $scope.password, function(response) {
+                if(response.success) {
+                    AuthenticationService.SetCredentials($scope.username, $scope.password);
+                    $location.path('/');
+                } else {
+                    $scope.error = response.message;
+                    $scope.dataLoading = false;
+                }
+            });
+        };
+    }]);
