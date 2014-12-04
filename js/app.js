@@ -12,6 +12,8 @@ var myApp = angular.module('myApp',
     $routeProvider.when('/customer-list', {templateUrl: 'partials/customer-list.html', controller: 'customerListCtrl'});
     $routeProvider.when('/customer-detail/:id', {templateUrl: 'partials/customer-detail.html', controller: 'customerDetailCtrl'});
     $routeProvider.when('/customer-creation', {templateUrl: 'partials/customer-creation.html', controller: 'customerCreationCtrl'});
+    $routeProvider.when('/user-list', {templateUrl: 'partials/user-list.html', controller: 'userListCtrl'});
+    $routeProvider.when('/user-creation', {templateUrl: 'partials/user-creation.html', controller: 'userCreationCtrl'});
     $routeProvider.when('/reports/:id', {templateUrl: 'partials/reportsDaysRemaining.html', controller: 'reportsDaysRemaining'});
     $routeProvider.when('/reports/:id/:name', {templateUrl: 'partials/reportsDaysRemaining.html', controller: 'reportsDaysRemaining'});
     $routeProvider.when('/compare/:id/:name', {templateUrl: 'partials/customer-compare.html', controller: 'customerCompare'});
@@ -28,7 +30,7 @@ var myApp = angular.module('myApp',
         }
         $rootScope.$on('$routeChangeStart', function (event, next, current) {
             // redirect to login page if not logged in
-            console.log('route change');
+            //console.log('route change');
             if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
                 $timeout(function(){
                 $location.path('/login');

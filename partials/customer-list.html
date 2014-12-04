@@ -31,20 +31,20 @@
             <!--<td>{{ customer.contractvalue | currency }}</td>
             <td>{{ customer.daysremaining }}</td>-->
             <td>
-              <a ng-click="editCustomer(customer._id)" class="btn btn-small btn-primary">
+              <a ng-click="editCustomer(customer._id)" class="btn btn-small btn-primary" title="Edit {{customer.name}}">
                 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
               </a>
             </td>
             <td>
-              <a ng-click="deleteCustomer(customer._id)" class="btn btn-small btn-danger">
+              <a ng-click="deleteCustomer(customer._id)" class="btn btn-small btn-danger" title="Delete {{customer.name}}">
                 <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
               </a>
             </td>
         </tr>
         </tbody>
     </table>
-    <a ng-click="createCustomer()" class="btn btn-small btn-success">Create New Customer</a>
-    <a ng-click="compareCustomers()" class="btn btn-small btn-primary" ng-disabled="selection.length != 2">Compare</a>
+    <a ng-click="createCustomer()" class="btn btn-small btn-success" title="Create a Customer">Create New Customer</a>
+    <a ng-click="compareCustomers()" class="btn btn-small btn-primary" title="Compare 2 Customers" ng-disabled="selection.length != 2">Compare</a>
   </div>
 </div>
 

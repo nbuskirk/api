@@ -1,5 +1,5 @@
 <!-- Static navbar -->
-<div class="navbar navbar-inverse" role="navigation" ng-controller="Navigation" ng-if="globals.currentUser">
+<div class="navbar navbar-inverse" role="navigation" ng-controller="Navigation" ng-show="globals.currentUser">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
@@ -32,6 +32,14 @@
           <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Reports <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="#/reports/daysRemaining/barChart">Contract Time Remaining</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+        <a href="" class="dropdown-toggle" data-toggle="dropdown">
+          <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#/user-list">User List</a></li>
+            <li><a href="#/user-creation">Create a User</a></li>
           </ul>
         </li>
       </ul>

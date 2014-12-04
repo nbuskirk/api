@@ -17,6 +17,19 @@ services.factory('CustomerFactory', function ($resource) {
         delete: { method: 'DELETE', params: {id: '@_id'}}
     })
 });
+services.factory('UsersFactory', function ($resource) {
+    return $resource('http://nunumetrics.apica.local:8080/api/user', {}, {
+        query: { method: 'GET', isArray: true },
+        create: { method: 'POST' }
+    })
+});
+services.factory('UserFactory', function ($resource) {
+    return $resource('http://nunumetrics.apica.local:8080/api/user/:id', {}, {
+        show: { method: 'GET' },
+        update: { method: 'PUT', params: {id: '@_id'}},
+        delete: { method: 'DELETE', params: {id: '@_id'}}
+    })
+});
 services.factory('DeskFactory', function ($resource) {
     return $resource('https://support.apicasystem.com/api/v2/cases', { username: 'paul.schmitz@apicasystem.com', password: 'Zombie_69!' }, {
         query: {
@@ -26,14 +39,15 @@ services.factory('DeskFactory', function ($resource) {
     })
 });
 services.factory('AuthenticationService',
-    ['Base64', '$http', '$cookieStore', '$rootScope', '$timeout',
-    function (Base64, $http, $cookieStore, $rootScope, $timeout) {
+    ['Base64', '$http', '$cookieStore', '$rootScope', '$timeout', '$location',
+    function (Base64, $http, $cookieStore, $rootScope, $timeout, $location) {
         var service = {};
 
         service.Login = function (username, password, callback) {
 
             /* Dummy authentication for testing, uses $timeout to simulate api call
              ----------------------------------------------*/
+            /*
             $timeout(function(){
                 var response = { success: username === 'apica' && password === 'test' };
                 if(!response.success) {
@@ -41,14 +55,18 @@ services.factory('AuthenticationService',
                 }
                 callback(response);
             }, 1000);
-
+            */
 
             /* Use this for real authentication
              ----------------------------------------------*/
-            //$http.post('/api/authenticate', { username: username, password: password })
-            //    .success(function (response) {
-            //        callback(response);
-            //    });
+            var mypw = Base64.encode(password);
+            $http.post('http://nunumetrics.apica.local:8080/api/user/authenticate', { name: username, password: mypw })
+
+                .success(function (response) {
+                  //  console.log(response);
+                    callback(response);
+                });
+
 
         };
 

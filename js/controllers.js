@@ -95,6 +95,37 @@ angular.module('myApp.controllers', [])
             window.history.back()
         };
   }])
+  .controller('userCreationCtrl', ['$scope', 'UsersFactory', '$location',
+  function ($scope, UsersFactory, $location) {
+    $scope.submitForm = function(isValid) {
+      if (isValid) {
+        UsersFactory.create($scope.user, function(){
+          $location.path('/user-list');
+        })
+      }
+    };
+    $scope.cancel = function () {
+      window.history.back()
+    };
+  }])
+  .controller('userListCtrl', ['$scope','filterFilter', 'UsersFactory', 'UserFactory', '$location',
+  function ($scope, filterFilter, UsersFactory, UserFactory, $location, $templateCache) {
+      $scope.editUser = function (userId) {
+          $location.path('/user-detail/' + userId);
+      };
+      $scope.deleteUser = function (userId) {
+        if (confirm('Are you sure you wish to delete this user?')) {
+          UserFactory.delete({ id: userId },function(){
+            $scope.users = UsersFactory.query();
+          });
+        }
+      };
+      $scope.createUser = function () {
+          $location.path('/user-creation');
+      };
+      $scope.orderProp = 'name';
+      $scope.users = UsersFactory.query();
+  }])
   .controller('reportsDaysRemaining', ['$scope', '$routeParams', 'CustomersFactory', 'CustomerFactory', '$location',
   function ($scope, $routeParams, CustomersFactory, CustomerFactory, $location, $templateCache) {
           $scope.renderChart = function(){
